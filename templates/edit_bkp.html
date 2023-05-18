@@ -1,0 +1,129 @@
+{{define "Edit"}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Tahoma, sans-serif;
+        font-size: 13px;
+    }
+
+    #conteudo p {
+        margin-bottom: 13px;
+    }
+
+    #site {
+        width: 960px;
+        margin: 0 auto;
+    }
+
+
+    #corpo {
+        display: table;
+    }
+
+    #menu,
+    #conteudo,
+    #sidebar {
+        display: table-cell;
+    }
+
+    #menu {
+        width: 180px;
+        vertical-align: top;
+    }
+
+    #menu ul {
+        list-style-type: none;
+    }
+
+    #menu a {
+        display: block;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+
+
+    .conteudo-interno {
+        padding: 20px;
+    }
+
+    #sidebar {
+        width: 120px;
+    }
+
+    #rodape {
+        padding: 10px;
+        font-size: 11px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+
+    <body>
+        <div id="main-card">
+            <div id="cabecalho">
+                {{template "_head"}}
+            </div>
+            <div id="corpo" class="grupo">
+                <div id="menu">
+                    {{template "_menu"}}
+                </div>
+                <div id="conteudo">
+                    <div class="conteudo-interno">
+
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                                <h1 class="display-5">Alterando Posto de Gasolina</h1>
+                                <p class="lead">Altere os detalhes</p>
+                            </div>
+                        </div>
+
+                        <form method="POST" action="update">
+                            <input type="hidden" name="id" value="{{.Id}}"> 
+
+                            
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label for="name">Nome:</label>
+                                        <input type="text" name="name" class="form-control" value="{{.Name}}">                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="categoryID">Categoria:</label>
+                                        <input type="number" name="categoryID" class="form-control" value="{{.CategoryID}}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" value="salvar" class="btn btn-success">Alterar</button>
+                            <a class="btn btn-info" href="/">Voltar</a>
+                        </form>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="sidebar"></div>
+         </div>
+
+    </body>
+
+</div>
+
+</html>
+{{end}}
